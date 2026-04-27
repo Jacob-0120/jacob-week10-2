@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Image Styling Practice</title>
+    <style>
+        /* 基礎排版設定：讓三張圖片水平排列並置中 */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f8f9fa;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: space-around; /* 讓圖片之間有均勻的間距 */
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+        }
+
+        /* 左邊圖片：
+           1. 寬度 33% (width 33%)
+           2. 圓角 18px (radius 18px)
+           3. 不變形 (no distortion) 
+        */
+        .img-left {
+            width: 33%;
+            height: 300px; /* 為了與右邊對齊設定相同高度 */
+            border-radius: 18px;
+            object-fit: cover; /* ★ 關鍵屬性：裁切圖片以填滿框架，保證不變形 */
+        }
+
+        /* 中間圖片：
+           1. 寬高 150px (150px)
+           2. 圓形 (圖上寫 border 150px，實務上設 border-radius: 50% 即可變正圓)
+           3. 不變形 (no distortion) 
+        */
+        .img-center {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%; /* 讓正方形變為完美的圓形 */
+            object-fit: cover; /* ★ 關鍵屬性：保證風景圖不變形 */
+        }
+
+        /* 右邊圖片：
+           1. 寬度 33% (width 33%)
+           2. 高度 300px (300px)
+           3. 有變形 (distortion) 
+        */
+        .img-right {
+            width: 33%;
+            height: 300px;
+            /* ★ 關鍵：這裡「不」加上 object-fit: cover; 
+               瀏覽器就會硬生生把圖片拉伸/壓縮成指定的寬高，進而產生老師要求的「變形(distortion)」效果 */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="image-container">
+        <img class="img-left" src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&h=800&fit=crop" alt="Eiffel Tower Left">
+        
+        <img class="img-center" src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=400&h=400&fit=crop" alt="Cliff View">
+        
+        <img class="img-right" src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&h=400&fit=crop" alt="Eiffel Tower Right">
+    </div>
+
+</body>
+</html>
