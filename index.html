@@ -1,61 +1,59 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS Image Styling Practice</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            background-color: #f8f9fa;
-        }
+  <meta charset="UTF-8">
+  <title>CSS Image Styling</title>
 
-        .image-container {
-            display: flex;
-            /* ★ 修改差異 1：改為置中並設定固定間距，讓圖片緊湊一點 */
-            justify-content: center;
-            gap: 20px; 
-            align-items: center;
-            width: 100%;
-            /* ★ 修改差異 1：將最大寬度縮小，這樣 33% 就不會在大螢幕上變得無限寬 */
-            max-width: 800px; 
-            padding: 20px;
-        }
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: white;
+    }
 
-        .img-left {
-            width: 33%;
-            height: 300px;
-            border-radius: 18px;
-            object-fit: cover;
-        }
+    .container {
+      width: 90%;
+      margin: 80px auto;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 40px;
+    }
 
-        .img-center {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%; /* 老師寫 border 150px，實務上設 50% 即可變正圓 */
-            object-fit: cover;
-        }
+    /* left image: width 33%, radius 18px, no distortion */
+    .left-img {
+      width: 33%;
+      height: auto;
+      border-radius: 18px;
+    }
 
-        .img-right {
-            width: 33%;
-            height: 300px;
-            /* 這裡刻意不寫 object-fit: cover; 讓它產生變形 (distortion) */
-        }
-    </style>
+    /* middle image: circle, 150px, border, no distortion */
+    .circle-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 3px solid #333;
+      object-fit: cover;
+    }
+
+    /* right image: width 33%, height 300px, distortion */
+    .right-img {
+      width: 33%;
+      height: 300px;
+      border-radius: 0;
+    }
+  </style>
 </head>
+
 <body>
 
-    <div class="image-container">
-        <img class="img-left" src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&h=800&fit=crop" alt="Eiffel Tower Left">
-        
-        <img class="img-center" src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=400&h=400&fit=crop" alt="Cliff View">
-        
-        <img class="img-right" src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&h=800&fit=crop" alt="Eiffel Tower Right">
-    </div>
+  <div class="container">
+    <img src="paris.jpg" alt="Paris image" class="left-img">
+
+    <img src="mountain.jpg" alt="Mountain image" class="circle-img">
+
+    <img src="paris.jpg" alt="Distorted Paris image" class="right-img">
+  </div>
 
 </body>
 </html>
